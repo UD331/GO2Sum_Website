@@ -1,0 +1,259 @@
+body {
+    background-color: #f0f0f0; /* Changed to a mild muted flat color */
+    color: #000000;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background-color: #1E90FF;
+    padding: 15px 0;
+    text-align: center;
+    z-index: 1000;
+}
+
+header h1 {
+    margin: 0;
+    color: #ffffff;
+}
+
+.main-content {
+    margin-top: 70px; /* space for the fixed header */
+    width: 100%;
+    max-width: 950px; /* Made the container wider */
+    padding: 20px;
+    text-align: center;
+    color: #000000;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+
+
+.about {
+    font-size: 18px;
+    color: #000000;
+    text-align: center;
+}
+
+input[type="file"], select {
+    margin-top: 10px;
+    font-size: 16px;
+    font-weight: bold;
+    color: #000000;
+    background-color: #f0f0f0; /* Mild muted flat color background */
+    border: 1px solid #000000;
+    padding: 5px;
+    border-radius: 2px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+input[type="checkbox"] {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #000000;
+    background-color: #f0f0f0; /* Mild muted flat color background */
+    border: 1px solid #000000;
+    padding: 5px;
+    border-radius: 2px;
+    appearance: none;
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+    display: inline-block;
+    vertical-align: middle;
+}
+
+input[type="checkbox"]:hover {
+    background-color: #d9d9d9; /* Slightly darker muted color on hover */
+}
+
+input[type="checkbox"]:checked {
+    background-color: #f0f0f0; /* Mild muted flat color on checked */
+    background-image: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"%3E%3Cpath fill="black" d="M12.78 3.22a.75.75 0 0 1 1.06 1.06l-7.25 7.25a.75.75 0 0 1-1.06 0L2.47 8.53a.75.75 0 1 1 1.06-1.06l2.72 2.72 7.25-7.25z"/%3E%3C/svg%3E');
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.checkbox-label {
+    display: inline-block;
+    font-size: 16px;
+    margin-left: 5px;
+    vertical-align: middle;
+}
+
+button {
+    margin-top: 15px; /* increased margin to avoid conflict */
+    margin-bottom: 15px; /* increased margin to avoid conflict */
+    padding: 20px 40px; /* increased size */
+    background-color: #1E90FF; /* bright blue background */
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+button:hover {
+    background-color: #0056b3; /* darker blue on hover */
+}
+
+select:hover {
+    background-color: #d9d9d9; /* Slightly darker muted color on hover */
+}
+
+input[type="file"]:hover {
+    background-color: #d9d9d9; /* Slightly darker muted color on hover */
+}
+
+#output {
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #000000;
+}
+
+.footer {
+    margin-top: 40px;
+    font-size: 12px;
+    color: #000000;
+    text-align: center;
+}
+
+.footer a {
+    color: #000000;
+    text-decoration: underline;
+}
+
+input[type="file"] {
+    width: 225px; /* decreased width */
+    margin-bottom: 20px; /* added more space between input file and summary types */
+}
+
+select {
+    width: 100px; /* increased width */
+}
+
+button {
+    padding: 18px 35px; /* increased padding */
+    width: 450px; /* increased width */
+}
+
+.checkbox-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+
+.box {
+    background-color: #ffffff; /* Changed to a mild muted flat color */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+    width: 100%;
+}
+
+/* Add this new class for the example format box */
+.example-format {
+    background-color: #ffffff; /* Changed to a mild muted flat color */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+    width: 100%;
+    text-align: left; /* Align text to the left for better readability */
+}
+
+.example-format pre {
+    background-color: #e0e0e0;
+    padding: 10px;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+.input {
+    width: 100%; /* Set width to 100% to match the width of the sample example box */
+    background-color: #ffffff; /* Mild muted flat color */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
+    border: 1px solid #ccc; /* Add a border for better visibility */
+    padding: 8px; /* Add padding for better spacing */
+    box-sizing: border-box; /* Ensure padding is included in the width */
+    color: black;
+}
+
+datalist {
+    position: absolute;
+    visibility: hidden; /* Initially hide */
+    z-index: 1001; /* Higher than the header */
+    width: 100%;
+    display: block;
+}
+
+/* Show datalist when input receives focus */
+input.input:focus + datalist {
+    visibility: visible;
+}
+
+.selected-terms button {
+    font-size: 12px; /* Adjust the font size as needed */
+    width: 10px; /* Adjust the width as needed */
+    height: 10px; /* Adjust the height as needed */
+    line-height: 1; /* Center the cross vertically */
+    margin-left: 3px; /* Adjust the spacing between the term and the cross */
+    background-color: transparent; /* Make the background transparent */
+    border: none; /* Remove the border */
+    cursor: pointer; /* Change cursor to pointer on hover */
+    color: black; /* Set the color of the cross */
+}
+
+.selected-terms button:hover {
+    color: #f00; /* Change color on hover */
+}
+
+.selected-terms {
+    margin-bottom: 6px; /* Adjust margin-bottom as needed */
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+}
+
+.remove-button {
+    opacity: 0.5; /* Adjust the opacity as needed */
+}
+
+
+.download-link {
+    display: inline-block;
+    margin: 15px 0; /* Matching the top and bottom margin of the button */
+    padding: 17px 140px;
+    background-color: #1E90FF; /* bright blue background */
+    color: #ffffff;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 14px;
+}
+
+.download-link:hover {
+    background-color: #0056b3; /* darker blue on hover */
+}

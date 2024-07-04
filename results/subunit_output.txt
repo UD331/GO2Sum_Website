@@ -1,0 +1,1 @@
+searchBarProtein	FUNCTION: Hydrolyzes maltose-1-phosphate to maltose and glucuronate.	Confidence Score: 33.12

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GO2Sum Web Server</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <h1>GO2Sum Web Server</h1>
+    </header>
+    <div class="main-content">
+        <div class="box">
+            <p>GO2Sum is a large language model (LLM) based summarizer that generates human-readable summaries for GO term annotations made by protein function prediction methods.</p>
+            <p>The web server provides two interfaces, for single protein functional summary generation the users can select the list of GO terms from the dropdown list.</p>
+        </div>
+        <div class="box example-format">
+            <h3 style="margin-top: -4px;">Notice: The uploaded file format should be:</h3>
+            <pre>
+Protein    GO_IDs
+Q5AK66     GO:0000139;GO:0004609;GO:0005795
+A9AJN2     GO:0004609;GO:0005886;GO:0006646
+            </pre>
+            <div align="center">
+                <a  href="sample.tab" download="sample.tab" class="download-link">Download Sample Input</a>
+            </div>
+        </div>
+        <div class="box">
+            <div style="margin-top: -17px;" class="Explanation">
+                <h3>Search Bar Explanation</h3>
+                <p>You can select GO Terms from the search bar by clicking on them and pressing enter. You can remove any term by hovering near the entered term and clicking there.</p>
+            </div>
+            <div style="margin-top: -12px;">
+                <button id="trySampleInput" class="button" onclick="fillSampleInput()">Try Sample Input</button>
+            </div>
+            <div>
+                <label for="searchTerms1" class="label">Select GO terms from known list:</label>
+                <input type="text" id="searchTerms1" class="input" list="searchTerms1_suggestions" placeholder="Enter GO terms">
+                <div id="selectedTerms1" class="selected-terms"></div>
+                <datalist id="searchTerms1_suggestions"></datalist>
+            </div>           
+            <div >
+                <label for="inputFile" class="label">Upload Input File:</label>
+                <input type="file" id="inputFile" class="input">
+            </div>
+            <div>
+                <label for="manualInput" class="label">Or Enter Input Manually:</label>
+                <textarea id="manualInput" class="input" rows="10" cols="50" placeholder="Enter your input here in the format:
+                
+Protein GO_IDs
+Q5AK66  GO:0000139;GO:0004609;....
+A9AJN2  GO:0004609;GO:0005886;...."></textarea>
+            </div>
+            <div>
+                <label class="label">Summary Types:</label><br>
+                <div class="checkbox-container">
+                    <input type="checkbox" id="function" name="summaryType" value="function">
+                    <label for="function" class="checkbox-label">Function</label>
+                    <input type="checkbox" id="pathway" name="summaryType" value="pathway">
+                    <label for="pathway" class="checkbox-label">Pathway</label>
+                    <input type="checkbox" id="subunit" name="summaryType" value="subunit">
+                    <label for="subunit" class="checkbox-label">Subunit</label>
+                </div>
+            </div>
+            <button id="generateSummary" class="button" onclick="generateSummary()">Generate Summary</button>
+        </div>
+        <div class="box">
+            <div id="output" class="output"></div>
+        </div>
+    </div>
+    <div class="footer">
+        <p>Copyright (C) 2023 Swagarika Jaharlal Giri, Nabil Ibtehaz, Daisuke Kihara, and Purdue University.</p>
+        <p>License: GPL v3. (If you are interested in a different license, for example, for commercial use, please contact us.)</p>
+        <p>Contact: Daisuke Kihara (<a href="mailto:dkihara@purdue.edu">dkihara@purdue.edu</a>)</p>
+        <p>For technical problems or questions, please reach to Swagarika J Giri (<a href="mailto:giri2@purdue.edu">giri2@purdue.edu</a>)</p>
+    </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="script.js?v=<?= time() ?>"></script>
+    <script>
+        function fillSampleInput() {
+            const sampleInput = "Protein\tGO_IDs\nQ5AK66\tGO:0000139;GO:0004609;GO:0005795\nA9AJN2\tGO:0004609;GO:0005886;GO:0006646\n";
+            document.getElementById('manualInput').value = sampleInput;
+        }
+    </script>
+</body>
+</html>
