@@ -22,7 +22,6 @@ signal.alarm(60)
 
 
 
-os.environ["HUGGINGFACE_TOKEN"] = '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'
 
 modelFunc = SimpleT5()
 modelFunc.from_pretrained(model_type="t5", model_name="t5-base")
@@ -43,7 +42,7 @@ def function(df, filename):
     print('Started generating Function CC on the dataset !')
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
-    model_path ='/Users/Udayan/Downloads/GO_SUM/backend/models/pathway'
+    model_path ='Download and place path/models/pathway'
     modelFunc.load_model("t5", model_path, use_gpu=False)
     result_file = os.path.join(result_dir, 'function_' + filename)
     with open(result_file, 'w', newline='') as file:
@@ -68,7 +67,7 @@ def subunit(df, filename):
     print('Started generating Subunit on the dataset !')
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
-    model_path = '/Users/Udayan/Downloads/GO_SUM/backend/models/functionCC'
+    model_path = 'Download and place path/models/functionCC'
     modelSubunit.load_model("t5", model_path, use_gpu=False)
     result_file = os.path.join(result_dir, 'subunit_' + filename)
     with open(result_file, 'w', newline='') as file:
@@ -93,7 +92,7 @@ def pathway(df, filename):
     print('Started generating Pathway on the dataset !')
     if not os.path.exists(result_dir):
         os.makedirs(result_dir)
-    model_path ='/Users/Udayan/Downloads/GO_SUM/backend/models/pathway'
+    model_path ='Download and place path/models/pathway'
     modelPathway.load_model("t5", model_path, use_gpu=False)
     result_file = os.path.join(result_dir, 'pathway_' + filename)
     with open(result_file, 'w', newline='') as file:
