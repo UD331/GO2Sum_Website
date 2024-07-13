@@ -17,6 +17,8 @@ header {
     padding: 15px 0;
     text-align: center;
     z-index: 1000;
+    font-size: x-large;
+    margin-bottom: 50px;
 }
 
 header h1 {
@@ -29,24 +31,25 @@ header h1 {
     width: 100%;
     max-width: 950px; /* Made the container wider */
     padding: 20px;
-    text-align: center;
+    text-align: left;
     color: #000000;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    font-size: 22px;
 }
 
 
 
 .about {
-    font-size: 18px;
+    font-size: 22px;
     color: #000000;
-    text-align: center;
+    text-align: left;
 }
 
 input[type="file"], select {
     margin-top: 10px;
-    font-size: 16px;
+    font-size: 22px;
     font-weight: bold;
     color: #000000;
     background-color: #f0f0f0; /* Mild muted flat color background */
@@ -56,11 +59,12 @@ input[type="file"], select {
     display: block;
     margin-left: auto;
     margin-right: auto;
+    
 }
 
 input[type="checkbox"] {
     margin-top: 10px;
-    font-size: 16px;
+    font-size: 22px;
     color: #000000;
     background-color: #f0f0f0; /* Mild muted flat color background */
     border: 1px solid #000000;
@@ -87,27 +91,12 @@ input[type="checkbox"]:checked {
 
 .checkbox-label {
     display: inline-block;
-    font-size: 16px;
+    font-size: 22px;
     margin-left: 5px;
     vertical-align: middle;
 }
 
-button {
-    margin-top: 15px; /* increased margin to avoid conflict */
-    margin-bottom: 15px; /* increased margin to avoid conflict */
-    padding: 20px 40px; /* increased size */
-    background-color: #1E90FF; /* bright blue background */
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    font-size: 14px;
-}
 
-button:hover {
-    background-color: #0056b3; /* darker blue on hover */
-}
 
 select:hover {
     background-color: #d9d9d9; /* Slightly darker muted color on hover */
@@ -119,14 +108,14 @@ input[type="file"]:hover {
 
 #output {
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 22px;
     font-weight: bold;
     color: #000000;
 }
 
 .footer {
     margin-top: 40px;
-    font-size: 12px;
+    font-size: 14px;
     color: #000000;
     text-align: center;
 }
@@ -164,6 +153,7 @@ button {
     border-radius: 5px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
     width: 100%;
+    font-size: 22px;
 }
 
 /* Add this new class for the example format box */
@@ -174,6 +164,7 @@ button {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Lighter shadow */
     width: 100%;
     text-align: left; /* Align text to the left for better readability */
+    font-size: 22px;
 }
 
 .example-format pre {
@@ -207,7 +198,7 @@ input.input:focus + datalist {
 }
 
 .selected-terms button {
-    font-size: 12px; /* Adjust the font size as needed */
+    font-size: 15px; /* Adjust the font size as needed */
     width: 10px; /* Adjust the width as needed */
     height: 10px; /* Adjust the height as needed */
     line-height: 1; /* Center the cross vertically */
@@ -245,15 +236,36 @@ input.input:focus + datalist {
 .download-link {
     display: inline-block;
     margin: 15px 0; /* Matching the top and bottom margin of the button */
-    padding: 17px 140px;
+    padding: 18px 35px; /* increased padding */
+    width: 450px; /* increased width */
+    background-color: #1E90FF; /* bright blue background */
+    color: #ffffff;
+    border-radius: 5px;
+    border-color: #000000;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+    font-size: 22px;
+    height: 27px;
+}
+
+.download-link:hover {
+    background-color: #0056b3; /* darker blue on hover */
+}
+
+
+button {
+    display: inline-block;
+    margin: 15px 0; /* Matching the top and bottom margin of the button */
+    padding: 18px 35px; /* increased padding */
+    width: 517px; /* increased width */
     background-color: #1E90FF; /* bright blue background */
     color: #ffffff;
     border-radius: 5px;
     text-decoration: none;
     transition: background-color 0.3s ease;
-    font-size: 14px;
+    font-size: 22px;
 }
 
-.download-link:hover {
+button:hover {
     background-color: #0056b3; /* darker blue on hover */
 }
