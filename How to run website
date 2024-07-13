@@ -1,0 +1,13 @@
+To run it is pretty straightforward-
+Download the github repostiory.
+Download the required models.
+Go to models.py in codes and put the path of the unzipped models.
+Run python app.py.
+It will run on the developmental server and you can see it for yourself.
+
+
+
+
+
+2:26
+After that you can move it to production as you see fit.
