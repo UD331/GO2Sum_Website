@@ -15,6 +15,13 @@
             <p>GO2Sum is a large language model (LLM) based summarizer that generates human-readable summaries for GO term annotations made by protein function prediction methods.</p>
             <p>The web server provides two interfaces, for single protein functional summary generation the users can select the list of GO terms from the dropdown list.</p>
         </div>
+        <div class="button-container">
+            <button class="toggle-button" onclick="toggleInstructions()">Show Instructions</button>
+            <p class="instructions" id="instructions">
+                Here are some instructions for you to follow. Make sure to read them carefully and adhere to the guidelines provided.
+            </p>
+        </div>
+        
         <div class="box example-format">
             <h3 style="margin-top: -4px;">Notice: The uploaded file format should be:</h3>
             <pre>
@@ -63,6 +70,10 @@ A9AJN2  GO:0004609;GO:0005886;...."></textarea>
                     <label for="subunit" class="checkbox-label">Subunit</label>
                 </div>
             </div>
+            <h3>Receive Summary via Email (Optional)</h3>
+            <input type="email" id="emailInput" placeholder="Enter your email" 
+            style="width: 300px; height: 40px; font-size: 16px; padding: 10px;">
+            
             <div align="center"><button id="generateSummary" class="button" onclick="generateSummary()">Generate Summary</button></div>
             
         </div>
@@ -84,6 +95,18 @@ A9AJN2  GO:0004609;GO:0005886;...."></textarea>
         function fillSampleInput() {
             const sampleInput = "Protein\tGO_IDs\nQ5AK66\tGO:0000139;GO:0004609;GO:0005795\nA9AJN2\tGO:0004609;GO:0005886;GO:0006646\n";
             document.getElementById('manualInput').value = sampleInput;
+        }
+        function toggleInstructions() {
+            var instructions = document.getElementById("instructions");
+            var button = document.querySelector(".toggle-button");
+            
+            if (instructions.style.display === "none") {
+                instructions.style.display = "block";
+                button.textContent = "Hide Instructions";
+            } else {
+                instructions.style.display = "none";
+                button.textContent = "Show Instructions";
+            }
         }
     </script>
 </body>
