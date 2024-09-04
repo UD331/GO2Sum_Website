@@ -1,9 +1,21 @@
 from flask import Flask, request, jsonify, send_from_directory
 import subprocess, os, shutil
 from flask_cors import CORS
+from flask_mail import Mail, Message  # Import Flask-Mail
 
 app = Flask(__name__)
 CORS(app)
+
+
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'  # Example for Gmail
+app.config['MAIL_PORT'] = 587
+app.config['MAIL_USE_TLS'] = True
+app.config['MAIL_USE_SSL'] = False
+app.config['MAIL_USERNAME'] = 'gosum2464@gmail.com'  # Replace with your email
+app.config['MAIL_PASSWORD'] = 'ttxa viwd nkch tini '  # Replace with your email password
+app.config['MAIL_DEFAULT_SENDER'] = 'gosum2464@gmail.com'  # Replace with your email
+
+mail = Mail(app)  # Initialize Flask-Mail
 
 UPLOAD_FOLDER = 'tempFolder'
 if not os.path.exists(UPLOAD_FOLDER):
@@ -19,6 +31,15 @@ def serve_index():
 def serve_static_files(path):
     return send_from_directory('front-end', path)
 
+def send_email(recipient_email, subject, body):
+    try:
+        msg = Message(subject, recipients=[recipient_email])
+        msg.body = body
+        mail.send(msg)
+        print(f"Email sent successfully to {recipient_email}")
+    except Exception as e:
+        print(f"Error sending email: {str(e)}")
+
 @app.route('/generate_summary', methods=['POST'])
 def generate_summary():
     if 'input_file' not in request.files:
@@ -27,7 +48,7 @@ def generate_summary():
     file = request.files['input_file']
     summary_types = request.form['summary_types'].split(',')
     output_file = request.form['output_file']
-
+    email = request.form.get('email', None)  # Get email if provided
     if file.filename == '':
         return jsonify({'success': False, 'error': 'No selected file'})
 
@@ -49,6 +70,10 @@ def generate_summary():
                     result_lines.append("\n\n\n")  
             else:
                 result_lines.append(f'{summary_type.capitalize()} result not found.')
+        
+        result_text = ''.join(result_lines)
+        if email:
+            send_email(email, 'Your Generated Summary', result_text)
 
         response_data = {'success': True, 'result': ''.join(result_lines)}
         file_list = os.listdir(app.config['UPLOAD_FOLDER'])
