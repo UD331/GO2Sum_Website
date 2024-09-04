@@ -146,6 +146,8 @@ function generateSummary() {
         return;
     }
 
+    var email = document.getElementById('emailInput').value.trim();
+
     var outputBox = document.getElementById('output');
     outputBox.innerHTML = '<p>Generating Summary...</p>';
 
@@ -164,6 +166,10 @@ function generateSummary() {
     }
     formData.append('summary_types', summaryTypes.join(','));
     formData.append('output_file', 'output.txt');
+
+    if (email) {
+        formData.append('email', email);
+    }
 
     $.ajax({
         url: '/generate_summary',
@@ -185,6 +191,12 @@ function generateSummary() {
                     }
                 });
                 outputBox.innerHTML = resultHTML;
+
+                if (email) {
+                    alert('The summary has been sent to your email!');
+                }
+                document.getElementById('emailInput').value = '';
+
                 document.querySelectorAll('input[name="summaryType"]:checked').forEach(function(checkbox) {
                     checkbox.checked = false;
                 });
