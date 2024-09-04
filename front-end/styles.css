@@ -28,8 +28,7 @@ header h1 {
 
 .main-content {
     margin-top: 70px; /* space for the fixed header */
-    width: 100%;
-    max-width: 950px; /* Made the container wider */
+    width: 90%;
     padding: 20px;
     text-align: left;
     color: #000000;
@@ -268,4 +267,29 @@ button {
 
 button:hover {
     background-color: #0056b3; /* darker blue on hover */
+}
+
+.instructions {
+    display: none; /* Hide the paragraph by default */
+    margin-top: 10px;
+    text-align: center; /* Center text in the paragraph */
+}
+
+.toggle-button {
+    width: 517px; /* increased width */
+    margin: 15px 0; /* Matching the top and bottom margin of the button */
+    padding: 18px 35px; /* increased padding */
+    font-size: 22px;
+    cursor: pointer;
+    background-color: #1E90FF; /* bright blue background */
+    color: #fff;
+    border-radius: 5px;
+}
+
+.toggle-button:hover {
+    background-color: #0056b3;
+}
+
+.button-container {
+    text-align: center; /* Center the button inside the container */
 }
