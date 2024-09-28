@@ -183,13 +183,44 @@ function generateSummary() {
                 var lines = response.result.split('\n');
                 var resultHTML = '<p>Summary generated successfully.</p>';
                 resultHTML += '<p>Result:</p>';
+                // Start the table
+                resultHTML += '<table border="1"><thead><tr><th>Protein</th><th>Summary Type</th><th>Description</th></tr></thead><tbody>';
+                var summaryType = '';
                 lines.forEach(function(line) {
+                    // Check if it's a section header (--- Function Summary --- or --- Pathway Summary ---)
                     if (line.startsWith('---')) {
-                        resultHTML += '<p><strong>' + line + '</strong></p>';
-                    } else {
-                        resultHTML += '<p>' + line + '</p>';
+                        // Extract the summary type (Function, Pathway, Subunit)
+                        summaryType = line.replace(/---/g, '').replace('Summary', '').trim();
+                        
+                    } else if (line.trim() !== '') {
+                        // Parse the line into columns
+                        var parts = line.match(/(\w+)\s+([A-Z]+)\s*:\s*(.+)\s+Confidence Score:\s*(\d+.\d+)/);
+                        if (parts) {
+                            var protein = parts[1];
+                            var description = parts[3];
+                            var confidenceScore = parts[4];
+                            // Add the parsed data as a row in the table
+                            var color = '';
+                            if (summaryType === 'Function') {
+                                color = 'color: red;';
+                            } else if (summaryType === 'Subunit') {
+                                color = 'color: blue;';
+                            } else if (summaryType === 'Pathway') {
+                                color = 'color: green;';
+                            }
+
+                            // Add the parsed data as a row in the table with color styling
+                            resultHTML += `<tr style="${color}">
+                                <td>${protein}</td>
+                                <td>${summaryType}</td>
+                                <td>${description}</td>
+                            </tr>`;
+                        }
                     }
                 });
+
+                // Close the table
+                resultHTML += '</tbody></table>';
                 outputBox.innerHTML = resultHTML;
 
                 if (email) {
