@@ -34,7 +34,6 @@ num_of_summary = 1
 result_dir = 'results/'
 
 def get_confidence_score(score):
-    score = -3.5
     positive_score = math.exp(-score)
     return positive_score
 
